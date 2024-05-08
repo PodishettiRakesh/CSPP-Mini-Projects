@@ -63,14 +63,15 @@ def main():
             print(f"the updated score are player1 score: {player1Score} and player 2 score: {player2Score}")
         totalCards+=-1
         print("\n")
-
-
+    
     if player1Score>player2Score:
         print("game winner is player1! :)")
     elif player1Score<player2Score:
         print("game winner is player2 :)")
     else:
         print("both player scores are equal , this game end as Tie")
+
+
 
 
         
