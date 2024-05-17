@@ -19,3 +19,6 @@ def display_board(board):
             else:
                 print("*", end="  ")
         print("\n")
+
+def markNumber(board, card):
+    """Marks a card as guessed if it has been picked."""
