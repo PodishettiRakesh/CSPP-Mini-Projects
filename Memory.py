@@ -22,3 +22,9 @@ def display_board(board):
 
 def markNumber(board, card):
     """Marks a card as guessed if it has been picked."""
+    for i in range(0, len(board), 4):
+        row = board[i:i+4]
+        for i in row:
+            if card == i:
+               guessed.append(i)
+    return board
