@@ -28,3 +28,14 @@ def markNumber(board, card):
             if card == i:
                guessed.append(i)
     return board
+
+def pickedCard(dic, card1, card2):
+    """Checks if two picked cards are a matching pair."""
+    if dic[card1] == dic[card2]:
+        print(dic[card1], dic[card2])
+        print("You picked the same pair. Continue to pick the remaining cards.")
+        return True
+    else:
+        print(dic[card1], dic[card2])
+        print("You picked unpaired cards. Please try again.")
+        return False
