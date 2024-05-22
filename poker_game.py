@@ -112,3 +112,15 @@ def FullHouse(hand):
         return True
     return False
 # print(FullHouse("AH AD AS 5S 5D"))
+
+def Flush(hand):
+    suits=[]
+    hand=hand.split(" ")
+
+    for card in hand:
+        suits.append(card[1])
+    if suits[0]==suits[1] and suits[1]==suits[2] and suits[2]==suits[3] and suits[3]==suits[4]:
+        return True
+    return False
+
+# print(Flush("AH 6S AS 5S 5S"))
