@@ -87,3 +87,28 @@ def FourOfKind(hand):
     return False
 # print(FourOfKind("2H AH AH AH TH"))
 # print(FourOfKind("2H 2H 3H 2S 4G"))
+
+
+def FullHouse(hand):
+    values=[]
+    suits=[]
+    hand=hand.split(" ")
+
+    dic={}
+
+    for card in hand:
+        values.append(int(card_values[card[0]]))
+        suits.append(card[1])
+    for i in values:
+        if i in dic:
+            dic[i]+=1
+        else:
+            dic[i]=1
+    house=[]
+    for each in dic:
+        if dic[each]==3 or dic[each]==2:
+            house.append(dic[each])
+    if 3 in house and 2 in house:
+        return True
+    return False
+# print(FullHouse("AH AD AS 5S 5D"))
