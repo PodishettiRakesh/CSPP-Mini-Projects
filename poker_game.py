@@ -192,3 +192,25 @@ def TwoPairs(hand):
 
 # print(TwoPairs("5D AS 3S 3S 5S"))
 # print(TwoPairs("5D AS 3S 3S 5S"))
+
+
+def OnePair(hand):
+    values=[]
+    hand=hand.split(" ")
+    for card in hand:
+        values.append(card_values[card[0]])
+    
+    dic={}
+    for i in values:
+        if i in dic:
+            dic[i]+=1
+        else:
+            dic[i]=1
+   
+    for i in dic.values():
+        if i==2:
+            return True
+        
+
+    return False
+# print(OnePair("6D AS 3S 3S 5S"))
