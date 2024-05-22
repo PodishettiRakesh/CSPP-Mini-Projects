@@ -124,3 +124,21 @@ def Flush(hand):
     return False
 
 # print(Flush("AH 6S AS 5S 5S"))
+
+
+def Straight(hand):
+    values=[]
+    hand=hand.split(" ")
+
+    for card in hand:
+        values.append(int(card_values[card[0]]))
+    values.sort()
+
+    for i in range(len(values)-1):
+        if values==[1,2,3,4,14]:
+            return True
+        if int(values[i])-int(values[i+1])!=-1:
+            return False
+        return True
+    
+# print(Straight("AH 2S 3S 4S 5S"))
