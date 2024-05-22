@@ -142,3 +142,27 @@ def Straight(hand):
         return True
     
 # print(Straight("AH 2S 3S 4S 5S"))
+
+def ThreeOfKind(hand):
+    values=[]
+    hand=hand.split(" ")
+
+    dic={}
+
+    for card in hand:
+        values.append((card_values[card[0]]))
+    
+  
+    for i in values:
+        if i in dic:
+            dic[i]+=1
+        else:
+            dic[i]=1
+
+    for v in dic.values():
+        if v==3 or v==4 or v==5:
+            return True
+    return False
+
+# print(ThreeOfKind("AD AS AS 4S 5S"))
+# print(ThreeOfKind("KH KD KS KS KS"))
