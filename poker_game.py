@@ -20,3 +20,37 @@
 # cards tie then the next highest cards are compared, and so on. 
 
 card_values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
+
+
+def isRoyalFlush(hand):
+    suits=[]
+    values=[]
+    hand=hand.split(" ")
+    # return hand
+    for i in range(len(hand)):
+        values.append(hand[i][0])
+        suits.append(hand[i][1])
+
+    if suits[0]==suits[1] and suits[1]==suits[2] and suits[2]==suits[3] and suits[3]==suits[4]:
+        # print("suitssame")
+        list=["T","Q","A","J","K"]
+        for i in list:
+            # print(i)
+            if i not in values:
+                return 0
+        return 10
+    return 0
+
+# print(isRoyalFlush("TH JH QH KH AH"))
+
+def StraightFlush(hand):
+    values=[]
+    suits=[]
+    hand=hand.split(" ")
+
+    card_values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
+
+    for card in hand:
+        values.append(int(card_values[card[0]]))
+        suits.append(card[1])
+
