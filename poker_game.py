@@ -166,3 +166,29 @@ def ThreeOfKind(hand):
 
 # print(ThreeOfKind("AD AS AS 4S 5S"))
 # print(ThreeOfKind("KH KD KS KS KS"))
+
+
+def TwoPairs(hand):
+    values=[]
+    hand=hand.split(" ")
+    for card in hand:
+        values.append(card_values[card[0]])
+    
+    dic={}
+    for i in values:
+        if i in dic:
+            dic[i]+=1
+        else:
+            dic[i]=1
+    pairs=0
+    for i in dic.values():
+        if i==2:
+            pairs+=1
+        
+    if pairs==2:
+        return True
+
+    return False
+
+# print(TwoPairs("5D AS 3S 3S 5S"))
+# print(TwoPairs("5D AS 3S 3S 5S"))
