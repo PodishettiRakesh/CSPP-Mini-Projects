@@ -53,4 +53,13 @@ def StraightFlush(hand):
     for card in hand:
         values.append(int(card_values[card[0]]))
         suits.append(card[1])
+    values=sorted(values)
 
+    for i in range(len(values)-1):
+        if values==[1,2,3,4,14] and suits[0]==suits[1] and suits[1]==suits[2] and suits[2]==suits[3] and suits[3]==suits[4]:
+            return 9
+        if int(values[i])-int(values[i+1])!=-1:
+            return 0
+        elif suits[0]==suits[1] and suits[1]==suits[2] and suits[2]==suits[3] and suits[3]==suits[4]:
+            return 9
+# print(StraightFlush("AH JH 4H KH TH"))
