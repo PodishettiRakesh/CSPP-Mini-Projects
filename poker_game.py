@@ -63,3 +63,27 @@ def StraightFlush(hand):
         elif suits[0]==suits[1] and suits[1]==suits[2] and suits[2]==suits[3] and suits[3]==suits[4]:
             return 9
 # print(StraightFlush("AH JH 4H KH TH"))
+
+
+def FourOfKind(hand):
+    values=[]
+    suits=[]
+    hand=hand.split(" ")
+
+    dic={}
+
+    for card in hand:
+        values.append(int(card_values[card[0]]))
+        suits.append(card[1])
+    for i in values:
+        if i in dic:
+            dic[i]+=1
+        else:
+            dic[i]=1
+
+    for v in dic.values():
+        if v==4:
+            return True
+    return False
+# print(FourOfKind("2H AH AH AH TH"))
+# print(FourOfKind("2H 2H 3H 2S 4G"))
