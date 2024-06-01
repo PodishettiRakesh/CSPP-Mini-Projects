@@ -67,4 +67,19 @@ def main():
         daily_update(stocks)
         view_portfolio(portfolio)
     
+    while True:
+            action = input("Enter 'buy', 'sell', or 'pass': ").strip().lower()
+            if action == 'buy':
+                stock_name = input("Enter stock name to buy: ").strip().upper()
+                quantity = int(input("Enter quantity to buy: "))
+                buy_stock(portfolio, stocks, stock_name, quantity)
+            elif action == 'sell':
+                stock_name = input("Enter stock name to sell: ").strip().upper()
+                quantity = int(input("Enter quantity to sell: "))
+                sell_stock(portfolio, stock_name, quantity)
+            elif action == 'pass':
+                break
+            else:
+                print("Invalid action. Please enter 'buy', 'sell', or 'pass'.")
+    
 main()
