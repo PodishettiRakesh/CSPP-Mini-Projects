@@ -29,6 +29,17 @@ def buy_stock(portfolio, stocks, stock_name, quantity):
     else:
         print("Insufficient cash to buy stock.")
 
+def sell_stock(portfolio, stock_name, quantity):
+    if stock_name in portfolio['stocks'] and portfolio['stocks'][stock_name]['quantity'] >= quantity:
+        stock = portfolio['stocks'][stock_name]['stock']
+        portfolio['cash'] += stock['price'] * quantity
+        portfolio['stocks'][stock_name]['quantity'] -= quantity
+        if portfolio['stocks'][stock_name]['quantity'] == 0:
+            del portfolio['stocks'][stock_name]
+        print(f"Sold {quantity} shares of {stock_name} at ${stock['price']} each.")
+    else:
+        print("Insufficient shares to sell.")
+
 
 def view_portfolio(portfolio):
     print(f"Available cash: ${portfolio['cash']}")
@@ -55,4 +66,5 @@ def main():
         print(f"\n--- Day {day} ---")
         daily_update(stocks)
         view_portfolio(portfolio)
+    
 main()
