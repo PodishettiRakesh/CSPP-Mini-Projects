@@ -54,6 +54,15 @@ def daily_update(stocks):
     for stock in stocks:
         print(f"{stock['name']}: New price ${stock['price']}, Daily change {get_daily_change(stock)}%")
 
+
+def total_portfolio_value(portfolio):
+    total_value = portfolio['cash']
+    for stock_name, stock_info in portfolio['stocks'].items():
+        stock = stock_info['stock']
+        quantity = stock_info['quantity']
+        total_value += stock['price'] * quantity
+    return total_value
+
 def main():
     initial_cash = 10000
     days_of_simulation = 5
@@ -81,5 +90,11 @@ def main():
                 break
             else:
                 print("Invalid action. Please enter 'buy', 'sell', or 'pass'.")
+        print(f"Total portfolio value: ${total_portfolio_value(portfolio)}")
+
+    print("\nSimulation ended.")
+    view_portfolio(portfolio)
+    print(f"Final portfolio value: ${total_portfolio_value(portfolio)}")
+
     
 main()
