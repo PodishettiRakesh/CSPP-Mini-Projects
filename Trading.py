@@ -16,6 +16,26 @@ def update_stock_prices(stocks):
 def get_daily_change(stock):
     return round(((stock['price'] - stock['previous_price']) / stock['previous_price']) * 100, 2)
 
+def buy_stock(portfolio, stocks, stock_name, quantity):
+    stock = next(stock for stock in stocks if stock['name'] == stock_name)
+    cost = stock['price'] * quantity
+    if portfolio['cash'] >= cost:
+        portfolio['cash'] -= cost
+        if stock_name in portfolio['stocks']:
+            portfolio['stocks'][stock_name]['quantity'] += quantity
+        else:
+            portfolio['stocks'][stock_name] = {'stock': stock, 'quantity': quantity}
+        print(f"Bought {quantity} shares of {stock_name} at ${stock['price']} each.")
+    else:
+        print("Insufficient cash to buy stock.")
+
+
+def daily_update(stocks):
+    print("\n--- Daily Update ---")
+    update_stock_prices(stocks)
+    for stock in stocks:
+        print(f"{stock['name']}: New price ${stock['price']}, Daily change {get_daily_change(stock)}%")
+
 def main():
     initial_cash = 10000
     days_of_simulation = 5
