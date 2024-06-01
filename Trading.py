@@ -30,6 +30,13 @@ def buy_stock(portfolio, stocks, stock_name, quantity):
         print("Insufficient cash to buy stock.")
 
 
+def view_portfolio(portfolio):
+    print(f"Available cash: ${portfolio['cash']}")
+    for stock_name, stock_info in portfolio['stocks'].items():
+        stock = stock_info['stock']
+        quantity = stock_info['quantity']
+        print(f"{stock_name}: {quantity} shares at ${stock['price']} each")
+
 def daily_update(stocks):
     print("\n--- Daily Update ---")
     update_stock_prices(stocks)
