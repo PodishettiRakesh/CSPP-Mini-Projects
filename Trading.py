@@ -4,3 +4,4 @@ def main():
     stocks = [{'name': 'AAPL', 'price': 150, 'previous_price': 150},
               {'name': 'GOOG', 'price': 2800, 'previous_price': 2800},
               {'name': 'TSLA', 'price': 700, 'previous_price': 700}]
+    portfolio = {'cash': initial_cash, 'stocks': {}}
