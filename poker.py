@@ -22,7 +22,7 @@
 card_values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
 
 
-def isRoyalFlush(hand):
+def is_Royal_Flush(hand):
     suits=[]
     values=[]
     hand=hand.split(" ")
@@ -41,9 +41,9 @@ def isRoyalFlush(hand):
         return 10
     return 0
 
-# print(isRoyalFlush("TH JH QH KH AH"))
+# print(is_Royal_Flush("TH JH QH KH AH"))
 
-def StraightFlush(hand):
+def Straight_Flush(hand):
     values=[]
     suits=[]
     hand=hand.split(" ")
@@ -62,7 +62,7 @@ def StraightFlush(hand):
             return 0
         elif suits[0]==suits[1] and suits[1]==suits[2] and suits[2]==suits[3] and suits[3]==suits[4]:
             return 9
-# print(StraightFlush("AH JH 4H KH TH"))
+# print(Straight_Flush("AH JH 4H KH TH"))
 
 
 def FourOfKind(hand):
@@ -89,7 +89,7 @@ def FourOfKind(hand):
 # print(FourOfKind("2H 2H 3H 2S 4G"))
 
 
-def FullHouse(hand):
+def Full_House(hand):
     values=[]
     suits=[]
     hand=hand.split(" ")
@@ -111,7 +111,7 @@ def FullHouse(hand):
     if 3 in house and 2 in house:
         return True
     return False
-# print(FullHouse("AH AD AS 5S 5D"))
+# print(Full_House("AH AD AS 5S 5D"))
 
 def Flush(hand):
     suits=[]
@@ -168,7 +168,7 @@ def ThreeOfKind(hand):
 # print(ThreeOfKind("KH KD KS KS KS"))
 
 
-def TwoPairs(hand):
+def Two_Pairs(hand):
     values=[]
     hand=hand.split(" ")
     for card in hand:
@@ -190,11 +190,11 @@ def TwoPairs(hand):
 
     return False
 
-# print(TwoPairs("5D AS 3S 3S 5S"))
-# print(TwoPairs("5D AS 3S 3S 5S"))
+# print(Two_Pairs("5D AS 3S 3S 5S"))
+# print(Two_Pairs("5D AS 3S 3S 5S"))
 
 
-def OnePair(hand):
+def One_Pair(hand):
     values=[]
     hand=hand.split(" ")
     for card in hand:
@@ -213,26 +213,26 @@ def OnePair(hand):
         
 
     return False
-# print(OnePair("6D AS 3S 3S 5S"))
+# print(One_Pair("6D AS 3S 3S 5S"))
 
-def highestCard(hand):
+def Highest_cardValue(hand):
     hand=hand.split()
     values=[]
     for i in hand:
         values.append(card_values[i[0]])
 
     return max(values)
-# print(highestCard("6D 7S KS 3S 5S"))
+# print(Highest_cardValue("6D 7S KS 3S 5S"))
 
 # ------------------------------------------------------------------------------
 def findRank(hand):
-    if isRoyalFlush(hand):
+    if is_Royal_Flush(hand):
         return 10
-    elif StraightFlush(hand):
+    elif Straight_Flush(hand):
         return 9
     elif FourOfKind(hand):
         return 8
-    elif FullHouse(hand):
+    elif Full_House(hand):
         return 7
     elif Flush(hand):
         return 6
@@ -240,20 +240,20 @@ def findRank(hand):
         return 5
     elif ThreeOfKind(hand):
         return 4
-    elif TwoPairs(hand):
+    elif Two_Pairs(hand):
         return 3
-    elif OnePair(hand):
+    elif One_Pair(hand):
         return 2
     else:
         return 1
-def StraightFlushTie(hands):
-    r1=highestCard(hands[0])
-    r2=highestCard(hands[1])
+def Staright_Flush_Tie(hands):
+    r1=Highest_cardValue(hands[0])
+    r2=Highest_cardValue(hands[1])
     if r1>r2:
         return hands[0]
     elif r2>r1:
         return hands[1]
-def FourOfKindTie(hands):
+def FourOfKind_Tie(hands):
     d1 = {}
     d2 = {}
     
@@ -295,7 +295,7 @@ def FourOfKindTie(hands):
         elif f4 > f2:
             return hands[1]
         
-def FullHouseTie(hands):
+def Full_House_Tie(hands):
     d1 = {}
     d2 = {}
     
@@ -337,7 +337,7 @@ def FullHouseTie(hands):
         elif f4 > f2:
             return hands[1]
         
-def FlushTie(hands):
+def Flush_Tie(hands):
     hand = hands[0].split(" ")
     values1 = []
     for i in hand:
@@ -363,7 +363,7 @@ def FlushTie(hands):
             return hands[1]
 
 
-def ThreeOfKindTie(hands):
+def ThreeOfKind_Tie(hands):
     d1 = {}
     d2 = {}
     
@@ -414,7 +414,9 @@ def ThreeOfKindTie(hands):
                 return hands[1]
 
 
-def TwoPairsTie(hands):
+
+
+def Two_Pairs_Tie(hands):
     d1 = {}
     d2 = {}
     
@@ -467,21 +469,21 @@ def TwoPairsTie(hands):
 # --------------------------------------------------------------
 def tiebreak(hands,rank):
     if rank==9:
-        return StraightFlushTie(hands)
+        return Staright_Flush_Tie(hands)
     elif rank==8:
-        return FourOfKindTie(hands)
+        return FourOfKind_Tie(hands)
     elif rank==7:
-        return FullHouseTie(hands)
+        return Full_House_Tie(hands)
     elif rank == 6:
-        return FlushTie(hands)
+        return Flush_Tie(hands)
     elif rank == 5:
-        return StraightFlushTie(hands)
+        return Staright_Flush_Tie(hands)
     elif rank == 4:
-        return ThreeOfKindTie(hands)
+        return ThreeOfKind_Tie(hands)
     elif rank == 3:
-        return TwoPairsTie(hands)
-    # elif rank == 1:
-    #     return flusht(hands)
+        return Two_Pairs_Tie(hands)
+    elif rank == 1:
+        return Flush_Tie(hands)
 
 def poker(hands):
     rank1=findRank(hands[0])
