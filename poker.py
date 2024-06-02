@@ -361,6 +361,59 @@ def FlushTie(hands):
             return hands[0]
         elif values2[i] > values1[i]:
             return hands[1]
+
+
+def ThreeOfKindTie(hands):
+    d1 = {}
+    d2 = {}
+    
+    hand = hands[0].split(" ")
+    for i in hand:
+        if i[0] in d1:
+            d1[i[0]] += 1
+        else:
+            d1[i[0]] = 1
+
+    hand = hands[1].split(" ")
+    for i in hand:
+        if i[0] in d2:
+            d2[i[0]] += 1
+        else:
+            d2[i[0]] = 1
+    f1 = 0
+    l1 = []
+    for k,v in d1.items():
+        if d1[k] == 3:
+            f1 = k
+        else:
+            l1.append(k)
+
+    f2 = 0
+    l2 = []
+    for k,v in d2.items():
+        if d2[k] == 3:
+            f2 = k
+        else:
+            l2.append(k)
+
+    if f1 > f2:
+        return hands[0]
+    elif f2 > f1:
+        return hands[1]
+    else:
+        l1 = sorted(l1)
+        l2 = sorted(l2)
+        if l2[1] > l1[1]:
+            return hands[1]
+        elif l1[1]>l2[1]:
+            return hands[0]
+        else:
+            if l1[0] > l2[0]:
+                return hands[0]
+            elif l2[0] > l1[0]:
+                return hands[1]
+
+
 # --------------------------------------------------------------
 def tiebreak(hands,rank):
     if rank==9:
@@ -371,6 +424,14 @@ def tiebreak(hands,rank):
         return FullHouseTie(hands)
     elif rank == 6:
         return FlushTie(hands)
+    elif rank == 5:
+        return StraightFlushTie(hands)
+    elif rank == 4:
+        return ThreeOfKindTie(hands)
+    # elif rank == 3:
+    #     return twopt(hands)
+    # elif rank == 1:
+    #     return flusht(hands)
 
 def poker(hands):
     rank1=findRank(hands[0])
@@ -382,3 +443,4 @@ def poker(hands):
         return hands[1]
     else:
         return tiebreak(hands, rank1)
+    
