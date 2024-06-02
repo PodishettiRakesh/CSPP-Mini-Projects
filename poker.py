@@ -246,8 +246,19 @@ def findRank(hand):
         return 2
     else:
         return 1
+def StraightFlushTie(hands):
+    
+def tiebreak(hands,rank):
+    if rank==9:
+        return StraightFlushTie(hands)
 
 def poker(hands):
-    # print("fhvbf vi: ",hands)
     rank1=findRank(hands[0])
     rank2=findRank(hands[1])
+
+    if rank1 > rank2:
+        return hands[0]
+    elif rank2 > rank1:
+        return hands[1]
+    else:
+        return tiebreak(hands, rank1)
