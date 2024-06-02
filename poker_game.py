@@ -214,3 +214,12 @@ def OnePair(hand):
 
     return False
 # print(OnePair("6D AS 3S 3S 5S"))
+
+def highestCard(hand):
+    hand=hand.split()
+    values=[]
+    for i in hand:
+        values.append(card_values[i[0]])
+
+    return max(values)
+# print(highestCard("6D 7S KS 3S 5S"))
