@@ -223,3 +223,31 @@ def highestCard(hand):
 
     return max(values)
 # print(highestCard("6D 7S KS 3S 5S"))
+
+
+def findRank(hand):
+    if isRoyalFlush(hand):
+        return 10
+    elif StraightFlush(hand):
+        return 9
+    elif FourOfKind(hand):
+        return 8
+    elif FullHouse(hand):
+        return 7
+    elif Flush(hand):
+        return 6
+    elif Straight(hand):
+        return 5
+    elif ThreeOfKind(hand):
+        return 4
+    elif TwoPairs(hand):
+        return 3
+    elif OnePair(hand):
+        return 2
+    else:
+        return 1
+
+def poker(hands):
+    # print("fhvbf vi: ",hands)
+    rank1=findRank(hands[0])
+    rank2=findRank(hands[1])
