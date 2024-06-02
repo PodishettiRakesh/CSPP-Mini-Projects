@@ -294,12 +294,56 @@ def FourOfKindTie(hands):
             return hands[0]
         elif f4 > f2:
             return hands[1]
+        
+def FullHouseTie(hands):
+    d1 = {}
+    d2 = {}
+    
+    hand = hands[0].split(" ")
+    for i in hand:
+        if i[0] in d1:
+            d1[i[0]] += 1
+        else:
+            d1[i[0]] = 1
 
+    hand = hands[1].split(" ")
+    for i in hand:
+        if i[0] in d2:
+            d2[i[0]] += 1
+        else:
+            d2[i[0]] = 1
+    f1 = 0
+    f2 = 0
+    for k,v in d1.items():
+        if d1[k] == 3:
+            f1 = k
+        elif d1[k] == 2:
+            f2 = k
+    f3 = 0
+    f4 = 0       
+    for k,v in d2.items():
+        if d2[k] == 3:
+            f3 = k
+        elif d2[k] == 2:
+            f4 = k 
+    
+    if f1 > f3:
+        return hands[0]
+    elif f3 > f1:
+        return hands[1]
+    else:
+        if f2 > f4:
+            return hands[0]
+        elif f4 > f2:
+            return hands[1]
+# --------------------------------------------------------------
 def tiebreak(hands,rank):
     if rank==9:
         return StraightFlushTie(hands)
     elif rank==8:
         return FourOfKindTie(hands)
+    elif rank==7:
+        return FullHouseTie(hands)
 
 def poker(hands):
     rank1=findRank(hands[0])
