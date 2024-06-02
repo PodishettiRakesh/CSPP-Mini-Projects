@@ -336,6 +336,31 @@ def FullHouseTie(hands):
             return hands[0]
         elif f4 > f2:
             return hands[1]
+        
+def FlushTie(hands):
+    hand = hands[0].split(" ")
+    values1 = []
+    for i in hand:
+        if i[0] == 'T' or i[0] == 'K' or i[0] =='J' or i[0] == 'Q' or i[0] == 'A':
+            values1.append(card_values[i[0]])
+        else:
+            values1.append(int(i[0]))   
+    values1 = sorted(values1)
+
+    hand = hands[1].split(" ")
+    values2 = []
+    for i in hand:
+        if i[0] == 'T' or i[0] == 'K' or i[0] =='J' or i[0] == 'Q' or i[0] == 'A':
+            values2.append(card_values[i[0]])
+        else:
+            values2.append(int(i[0]))   
+    values2 = sorted(values2)
+
+    for i in range(4, -1, -1):
+        if values1[i] > values2[i]:
+            return hands[0]
+        elif values2[i] > values1[i]:
+            return hands[1]
 # --------------------------------------------------------------
 def tiebreak(hands,rank):
     if rank==9:
@@ -344,6 +369,8 @@ def tiebreak(hands,rank):
         return FourOfKindTie(hands)
     elif rank==7:
         return FullHouseTie(hands)
+    elif rank == 6:
+        return FlushTie(hands)
 
 def poker(hands):
     rank1=findRank(hands[0])
