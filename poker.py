@@ -414,6 +414,56 @@ def ThreeOfKindTie(hands):
                 return hands[1]
 
 
+def TwoPairsTie(hands):
+    d1 = {}
+    d2 = {}
+    
+    hand = hands[0].split(" ")
+    for i in hand:
+        if i[0] in d1:
+            d1[i[0]] += 1
+        else:
+            d1[i[0]] = 1
+
+    hand = hands[1].split(" ")
+    for i in hand:
+        if i[0] in d2:
+            d2[i[0]] += 1
+        else:
+            d2[i[0]] = 1
+    
+    l1 = []
+    v1 = 0
+    for k,v in d1.items():
+        if d1[k] == 2:
+            l1.append(k)
+        else:
+            v1 = k
+    l2 = []
+    v2 = 0
+    for k,v in d2.items():
+        if d2[k] == 2:
+            l2.append(k)
+        else:
+            v2 = k
+
+    l1 = sorted(l1)    
+    l2 = sorted(l2)    
+
+    if l1[1] > l2[1]:
+        return hands[0]
+    elif l2[1] > l1[1]:
+        return hands[1]
+    else:
+        if l1[0] > l2[0]:
+            return hands[0]
+        elif l2[0] > l1[0]:
+            return hands[1]
+        else:
+            if v1 > v2:
+                return hands[0]
+            elif v2 > v1:
+                return hands[1]
 # --------------------------------------------------------------
 def tiebreak(hands,rank):
     if rank==9:
@@ -428,8 +478,8 @@ def tiebreak(hands,rank):
         return StraightFlushTie(hands)
     elif rank == 4:
         return ThreeOfKindTie(hands)
-    # elif rank == 3:
-    #     return twopt(hands)
+    elif rank == 3:
+        return TwoPairsTie(hands)
     # elif rank == 1:
     #     return flusht(hands)
 
