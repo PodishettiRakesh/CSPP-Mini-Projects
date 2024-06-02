@@ -247,7 +247,13 @@ def findRank(hand):
     else:
         return 1
 def StraightFlushTie(hands):
-    
+    r1=highestCard(hands[0])
+    r2=highestCard(hands[1])
+    if r1>r2:
+        return hands[0]
+    elif r2>r1:
+        return hands[1]
+
 def tiebreak(hands,rank):
     if rank==9:
         return StraightFlushTie(hands)
