@@ -69,3 +69,11 @@ def move_up(grid):
         new_col = slide_and_merge_row_left(col)
         for i in range(4):
             grid[i][j] = new_col[i]
+
+# Step 9: Move down
+def move_down(grid):
+    for j in range(4):
+        col = [grid[i][j] for i in range(4)]
+        new_col = list(reversed(slide_and_merge_row_left(list(reversed(col)))))
+        for i in range(4):
+            grid[i][j] = new_col[i]
