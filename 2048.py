@@ -60,3 +60,12 @@ def slide_and_merge_row_left(row):
 # row = [2, 2, 4, 4]
 # new_row = slide_and_merge_row_left(row)
 # print(new_row)  # Output: [4, 8, 0, 0]
+
+
+# Step 8: Move up
+def move_up(grid):
+    for j in range(4):
+        col = [grid[i][j] for i in range(4)]
+        new_col = slide_and_merge_row_left(col)
+        for i in range(4):
+            grid[i][j] = new_col[i]
