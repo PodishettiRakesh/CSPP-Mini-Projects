@@ -6,7 +6,7 @@ def initialize_grid():
     add_new_tile(grid)
     add_new_tile(grid)
     return grid
-# print(initialize_grid())
+
 
 # Step 2: Add a new tile
 def add_new_tile(grid):
