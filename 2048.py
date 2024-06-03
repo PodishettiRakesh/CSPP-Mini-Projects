@@ -25,8 +25,7 @@ def print_grid(grid):
     for row in grid:
         print(" ".join([str(cell).ljust(5) for cell in row]))
     print()
-# grid=initialize_grid()
-# print_grid(grid)
+
 
 
 # Step 4: Get user input
@@ -35,7 +34,7 @@ def get_user_input():
     while move not in ('W', 'A', 'S', 'D'):
         move = input("Invalid input. Enter move (W/A/S/D): ").upper()
     return move
-# print(get_user_input())
+
 
 # Step 5: Slide and merge a row to the left
 def slide_and_merge_row_left(row):
@@ -57,12 +56,9 @@ def slide_and_merge_row_left(row):
     if last_value != 0:
         new_row[insert_pos] = last_value
     return new_row
-# row = [2, 2, 4, 4]
-# new_row = slide_and_merge_row_left(row)
-# print(new_row)  # Output: [4, 8, 0, 0]
 
 
-# Step 8: Move up
+# Step 6: Move up
 def move_up(grid):
     for j in range(4):
         col = [grid[i][j] for i in range(4)]
@@ -70,7 +66,7 @@ def move_up(grid):
         for i in range(4):
             grid[i][j] = new_col[i]
 
-# Step 9: Move down
+# Step 7: Move down
 def move_down(grid):
     for j in range(4):
         col = [grid[i][j] for i in range(4)]
@@ -78,12 +74,12 @@ def move_down(grid):
         for i in range(4):
             grid[i][j] = new_col[i]
 
-# Step 6: Move left
+# Step 8: Move left
 def move_left(grid):
     for i in range(4):
         grid[i] = slide_and_merge_row_left(grid[i])
 
-# Step 7: Move right
+# Step 9: Move right
 def move_right(grid):
     for i in range(4):
         grid[i] = list(reversed(slide_and_merge_row_left(list(reversed(grid[i])))))
