@@ -87,3 +87,11 @@ def move_left(grid):
 def move_right(grid):
     for i in range(4):
         grid[i] = list(reversed(slide_and_merge_row_left(list(reversed(grid[i])))))
+
+# Step 10: Check win
+def check_win(grid):
+    for i in range(4):
+        for j in range(4):
+            if grid[i][j] == 2048:
+                return True
+    return False
