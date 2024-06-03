@@ -18,3 +18,12 @@ def add_new_tile(grid):
     if empty_positions:
         x, y = random.choice(empty_positions)
         grid[x][y] = 2 if random.random() < 0.9 else 4
+
+
+# Step 3: Print the grid
+def print_grid(grid):
+    for row in grid:
+        print(" ".join([str(cell).ljust(5) for cell in row]))
+    print()
+# grid=initialize_grid()
+# print_grid(grid)
