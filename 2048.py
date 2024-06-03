@@ -27,3 +27,12 @@ def print_grid(grid):
     print()
 # grid=initialize_grid()
 # print_grid(grid)
+
+
+# Step 4: Get user input
+def get_user_input():
+    move = input("Enter move (W/A/S/D): ").upper()
+    while move not in ('W', 'A', 'S', 'D'):
+        move = input("Invalid input. Enter move (W/A/S/D): ").upper()
+    return move
+# print(get_user_input())
