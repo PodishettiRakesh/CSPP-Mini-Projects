@@ -107,3 +107,31 @@ def check_game_over(grid):
             if j < 3 and grid[i][j] == grid[i][j+1]:
                 return False
     return True
+
+# Step 12: Play game
+def play_game():
+    grid = initialize_grid()
+    print_grid(grid)
+    while True:
+        move = get_user_input()
+        if move == 'W':
+            move_up(grid)
+        elif move == 'A':
+            move_left(grid)
+        elif move == 'S':
+            move_down(grid)
+        elif move == 'D':
+            move_right(grid)
+        
+        add_new_tile(grid)
+        print_grid(grid)
+        
+        if check_win(grid):
+            print("Congratulations! You reached 2048!")
+            break
+        if check_game_over(grid):
+            print("Game over! No more valid moves.")
+            break
+
+if __name__ == "__main__":
+    play_game()
